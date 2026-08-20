@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+
+:root{
+  --paper:#FBF9F3; --card:#FFFFFF; --ink:#26303B; --inkSoft:#5B6976;
+  --line:#E7E0D2; --amber:#B0791F; --amberSoft:#F3E9D2;
+}
+*{ box-sizing:border-box; }
+html, body, #root{ height:100%; }
+body{ margin:0; }
+
+.sp-root{
+  font-family:'Pretendard',system-ui,-apple-system,sans-serif;
+  color:var(--ink); background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+.sp-serif{ font-family:'Nanum Myeongjo',serif; }
+
+/* buttons */
+.sp-primary{ background:var(--ink); color:#fff; border:none; cursor:pointer;
+  transition:filter .18s ease, transform .18s ease; }
+.sp-primary:hover{ filter:brightness(1.35); }
+.sp-primary:active{ transform:translateY(1px); }
+.sp-primary:disabled{ opacity:.5; cursor:default; }
+.sp-accent{ background:var(--amber); color:#fff; border:none; cursor:pointer;
+  transition:filter .18s ease, transform .18s ease; }
+.sp-accent:hover{ filter:brightness(1.08); }
+.sp-accent:active{ transform:translateY(1px); }
+.sp-accent:disabled{ opacity:.5; cursor:default; }
+.sp-ghost{ background:transparent; border:1px solid var(--line); color:var(--ink);
+  cursor:pointer; transition:background .18s ease,border-color .18s ease; }
+.sp-ghost:hover{ background:#fff; border-color:var(--amber); }
+
+/* cards */
+.sp-card{ background:var(--card); border:1px solid var(--line); cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.sp-card:hover{ transform:translateY(-2px);
+  box-shadow:0 10px 28px -18px rgba(38,48,59,.4); border-color:#DDD3BF; }
+
+.sp-chip{ cursor:pointer;
+  transition:background .15s ease,color .15s ease,border-color .15s ease; }
+
+.sp-input{ font-family:inherit; width:100%; background:#fff;
+  border:1px solid var(--line); color:var(--ink);
+  transition:border-color .18s ease, box-shadow .18s ease; outline:none; }
+.sp-input:focus{ border-color:var(--amber); box-shadow:0 0 0 3px var(--amberSoft); }
+
+.sp-nav{ cursor:pointer; transition:color .18s ease; color:var(--inkSoft); }
+.sp-nav:hover{ color:var(--ink); }
+
+.sp-link{ background:none; border:none; padding:0; cursor:pointer;
+  color:var(--inkSoft); text-decoration:none; }
+.sp-link:hover{ color:var(--ink); }
+
+a{ text-decoration:none; color:inherit; }
+
+button:focus-visible, .sp-input:focus-visible, .sp-chip:focus-visible, a:focus-visible{
+  outline:2px solid var(--amber); outline-offset:2px;
+}
+
+.sp-fade{ animation:spFade .32s ease both; }
+@keyframes spFade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+
+.sp-spin{ animation:spSpin .8s linear infinite; }
+@keyframes spSpin{ to{ transform:rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce){
+  .sp-fade, .sp-spin{ animation:none; }
+  .sp-card, .sp-primary, .sp-accent{ transition:none; }
+}
