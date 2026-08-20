@@ -28,11 +28,13 @@ export async function getSession() {
 export async function signInWithEmail(email) {
   const { error } = await supabase.auth.signInWithOtp({
     email,
-    options: { emailRedirectTo: "https://sanchakja.vercel.app/" },
+    options: {
+      emailRedirectTo: window.location.origin,
+    },
   });
+
   if (error) throw error;
-}
-export async function signOut() {
+}export async function signOut() {
   await supabase.auth.signOut();
 }
 
